@@ -34,65 +34,6 @@
             margin-bottom: 20px;
             border-left: 5px solid #0056b3;
         }
-        /* Formulário de Lançamento */
-        .form-panel {
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 25px;
-        }
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
-            align-items: flex-end;
-        }
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-        .form-group label {
-            font-size: 12px;
-            font-weight: 600;
-            color: #495057;
-        }
-        .form-group input, .form-group select {
-            padding: 8px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            font-family: inherit;
-        }
-        .btn-submit {
-            background-color: #0056b3;
-            color: white;
-            border: none;
-            padding: 9px 15px;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .btn-submit:hover {
-            background-color: #004085;
-        }
-        /* KPIs */
-        .kpi-container {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .kpi-card {
-            background: #0056b3;
-            color: white;
-            padding: 15px;
-            border-radius: 6px;
-            flex: 1;
-            min-width: 150px;
-        }
-        .kpi-card h4 { margin: 0; font-size: 12px; text-transform: uppercase; opacity: 0.9; }
-        .kpi-card p { margin: 5px 0 0 0; font-size: 22px; font-weight: bold; }
         /* Tabela Resumo */
         table {
             width: 100%;
@@ -103,10 +44,58 @@
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #dee2e6;
-            font-size: 14px;
         }
         th {
             background-color: #0056b3;
             color: white;
         }
-        tr
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .status {
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .status-pendente { background-color: #ffe69c; color: #856404; }
+        .status-concluido { background-color: #d4edda; color: #155724; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>ILC - Acompanhamento de Frete Morto 2026</h1>
+        
+        <div class="info-box">
+            <p><strong>Painel Operacional:</strong> Gestão, controle e indicadores de ocorrências de frete morto.</p>
+            <p>Acompanhamento updated para consolidação de coletas e visibilidade de rotas.</p>
+        </div>
+
+        <h3>Resumo das Ocorrências</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>ID Ocorrência</th>
+                    <th>Transportadora</th>
+                    <th>Motivo</th>
+                    <th>Custo Estimado</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>29/05/2026</td>
+                    <td>FM-2026-001</td>
+                    <td>TransLog Express</td>
+                    <td>Veículo recusado / Sem carga pronta</td>
+                    <td>R$ 450,00</td>
+                    <td><span class="status status-pendente">Pendente</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
