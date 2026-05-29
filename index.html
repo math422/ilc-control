@@ -60,16 +60,67 @@
         }
         .status-pendente { background-color: #ffe69c; color: #856404; }
         .status-concluido { background-color: #d4edda; color: #155724; }
+
+        /* Tela de Login */
+        #login-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .login-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 320px;
+            text-align: center;
+        }
+        .login-box h2 { color: #0056b3; margin-top: 0; margin-bottom: 20px; font-size: 20px; }
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .login-box button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .login-box button:hover { background-color: #004085; }
+        #error-msg { color: #dc3545; font-size: 13px; margin-top: 10px; display: none; }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div id="login-screen">
+        <div class="login-box">
+            <h2>ILC - Restrito</h2>
+            <input type="text" id="username" placeholder="Usuário">
+            <input type="password" id="password" placeholder="Senha">
+            <button onclick="verificarLogin()">Entrar</button>
+            <div id="error-msg">Usuário ou senha incorretos!</div>
+        </div>
+    </div>
+
+    <div class="container" id="main-content" style="display: none;">
         <h1>ILC - Acompanhamento de Frete Morto 2026</h1>
         
         <div class="info-box">
             <p><strong>Painel Operacional:</strong> Gestão, controle e indicadores de ocorrências de frete morto.</p>
-            <p>Acompanhamento updated para consolidação de coletas e visibilidade de rotas.</p>
+            <p>Acompanhamento atualizado para consolidação de coletas e visibilidade de rotas.</p>
         </div>
 
         <h3>Resumo das Ocorrências</h3>
@@ -97,5 +148,20 @@
         </table>
     </div>
 
+    <script>
+        function verificarLogin() {
+            const userIn = document.getElementById("username").value;
+            const passIn = document.getElementById("password").value;
+            const errorMsg = document.getElementById("error-msg");
+
+            // AS LINHAS QUE VALIDAM O USUÁRIO E SENHA ESTÃO AQUI:
+            if (userIn === "ilc.log" && passIn === "ilc2026") {
+                document.getElementById("login-screen").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+            } else {
+                errorMsg.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
