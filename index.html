@@ -1,74 +1,94 @@
+index.html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ILC · Acompanhamento de Frete Morto 2026</title>
+    <title>ILC - Acompanhamento de Frete Morto 2026</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Barlow+Semi+Condensed:wght@500;600;700&display=swap');
-
-        :root{
-            --cyan:#00ABD2; --cyan-d:#0090b3; --yellow:#FFD200; --green:#3a9d24; --green-d:#2E8B12;
-            --graphite:#34343A; --graphite-2:#26262b; --ink:#1b1b20;
-            --good:#3a9d24; --bad:#e0533d; --warn:#FFD200;
-            --r:16px;
-            --bg:#0e0f13; --panel:#16181f; --panel-2:#1c1f28; --line:#2a2e3a;
-            --txt:#e9edf4; --muted:#8b93a6; --muted-2:#5d6577;
-            --field-bg:#0f1117; --option-bg:#16181f; --scroll-thumb:#2c3140; --scroll-thumb-h:#3a4154;
-            --shadow:0 10px 40px -12px rgba(0,0,0,.65);
-        }
-
+        /* Estilização Base */
         body {
-            font-family: 'Sora', system-ui, sans-serif;
-            background: var(--bg);
-            color: var(--txt);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
             margin: 0;
-            padding: 0;
-            overflow-x: hidden;
+            padding: 20px;
         }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0056b3;
+            border-bottom: 2px solid #eeeded;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .info-box {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 5px solid #0056b3;
+        }
+        /* Tabela Resumo */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        th {
+            background-color: #0056b3;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .status {
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .status-pendente { background-color: #ffe69c; color: #856404; }
+        .status-concluido { background-color: #d4edda; color: #155724; }
+    </style>
+</head>
+<body>
 
-        /* ===== LOGIN STYLE ===== */
-        #login {
-            position: fixed;
-            inset: 0;
-            z-index: 50;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(ellipse 120% 90% at 50% -10%,#1a1d27 0%,#0b0c10 60%);
-            transition: opacity .4s ease, visibility .4s;
-        }
-        #login.hide {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-        .login-card {
-            width: min(400px, 92vw);
-            background: rgba(22, 24, 31, 0.95);
-            border: 1px solid var(--line);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-        .login-sub {
-            color: var(--muted);
-            font-size: 12px;
-            letter-spacing: .14em;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-        }
-        .login-sub b { color: var(--cyan); }
-        .f-group { margin-bottom: 20px; text-align: left; }
-        .f-group label { display: block; font-size: 11px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-        .f-group input { width: 100%; padding: 13px; background: var(--field-bg); border: 1px solid var(--line); border-radius: 11px; color: var(--txt); font-size: 14px; }
-        .f-group input:focus { outline: none; border-color: var(--cyan); }
-        .btn-login { width: 100%; padding: 14px; border: none; border-radius: 11px; cursor: pointer; background: linear-gradient(120deg, var(--cyan), var(--cyan-d)); color: #fff; font-weight: 700; font-size: 14px; transition: .2s; }
-        .btn-login:hover { transform: translateY(-2px); }
-        .error-msg { color: var(--bad); font-size: 12px; margin-top: 10px; display: none; }
+    <div class="container">
+        <h1>ILC - Acompanhamento de Frete Morto 2026</h1>
+        
+        <div class="info-box">
+            <p><strong>Painel Operacional:</strong> Gestão, controle e indicadores de ocorrências de frete morto.</p>
+            <p>Acompanhamento atualizado para consolidação de coletas e visibilidade de rotas.</p>
+        </div>
 
-        /* ===== APP STRUCTURE ===== */
-        #app { display: none; padding: 20px; max-width: 1200px; margin: 0 auto; }
-        #app.show { display: block; }
-        .topbar { display: flex; align-items: center; justify-content: space-between; padding: 15px 0;
+        <h3>Resumo das Ocorrências</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>ID Ocorrência</th>
+                    <th>Transportadora</th>
+                    <th>Motivo</th>
+                    <th>Custo Estimado</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>29/05/2026</td>
+                    <td>FM-2026-001</td>
+                    <td>TransLog Express</td>
+                    <td>Veículo recusado / Sem carga pronta</td>
+                    <td>R$ 4
